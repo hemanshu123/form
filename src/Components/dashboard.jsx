@@ -3,9 +3,9 @@ import React from 'react';
 const Dashboard = () => {
   // Sample static table data
   const tableData = [
-    { id: 1, name: 'John Doe', email: 'john.doe@example.com', status: 'Active', role: 'Admin' },
-    { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', status: 'Inactive', role: 'User' },
-    { id: 3, name: 'Mike Johnson', email: 'mike.johnson@example.com', status: 'Active', role: 'Editor' },
+    { id: 1, name: 'John Doe', email: 'john.doe@example.com', status: 'Active', role: 'Admin', imageUrl: 'https://example.com/avatar1.jpg' },
+    { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', status: 'Inactive', role: 'User', imageUrl: 'https://example.com/avatar2.jpg' },
+    { id: 3, name: 'Mike Johnson', email: 'mike.johnson@example.com', status: 'Active', role: 'Editor', imageUrl: 'https://example.com/avatar3.jpg' },
     // Add more sample data as needed
   ];
 
@@ -27,7 +27,12 @@ const Dashboard = () => {
           {tableData.map((user) => (
             <tr key={user.id}>
               <td>{user.id}</td>
-              <td>{user.name}</td>
+              <td>
+                <div className="d-flex align-items-center">
+                  <img src={user.imageUrl} alt="Avatar" className="avatar mr-2" />
+                  {user.name}
+                </div>
+              </td>
               <td>{user.email}</td>
               <td>{user.status}</td>
               <td>{user.role}</td>
