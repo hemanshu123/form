@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 import './SignInSignUp.css';
 import profileIcon from '../assets/1.jpg';
 
@@ -12,7 +12,7 @@ const SignInSignUp = () => {
     confirmPassword: '',
   });
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   const { fullName, email, password, confirmPassword } = formData;
 
@@ -45,9 +45,9 @@ const SignInSignUp = () => {
       if (response.ok) {
         localStorage.setItem('token', data.token);
         if (isSignIn) {
-          navigate('/dashboard'); // Redirect to dashboard after sign in
+          navigate('/crud');
         } else {
-          setIsSignIn(true); // Switch to sign in form after sign up
+          setIsSignIn(true);
         }
       } else {
         alert(data.message);
@@ -63,12 +63,10 @@ const SignInSignUp = () => {
         <div className="card-body">
           <div className="header">
             <h3 className="card-title text-center mb-4">{isSignIn ? 'Sign In' : 'Sign Up'}</h3>
-
             <div className="d-flex align-items-center justify-content-center mb-3">
-              <img src={profileIcon} alt="image" width="64" height="64" />
+              <img src={profileIcon} alt="Profile Icon" width="64" height="64" />
             </div>
           </div>
-
           <form onSubmit={onSubmit}>
             {!isSignIn && (
               <div className="form-group">
